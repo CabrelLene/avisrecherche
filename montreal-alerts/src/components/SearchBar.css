@@ -1,0 +1,33 @@
+.ultramodern-searchbar {
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ultramodern-searchbar:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.ultramodern-searchbar input {
+  flex: 1;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  outline: none;
+}
+.ultramodern-searchbar button {
+  background-color: #007aff;
+  border: none;
+  padding: 0 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+.ultramodern-searchbar button:hover {
+  background-color: #005bb5;
+}
