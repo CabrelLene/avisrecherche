@@ -301,19 +301,6 @@ body {
   background-color: #002244;
 }
 
-/* ------------------------------------------------------------------
-   Responsive Styles
--------------------------------------------------------------------- */
-@media (max-width: 600px) {
-  .search-filter {
-    flex-direction: column;
-  }
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-  .search-form,
-  .filters {
-    max-width: none;
-    width: 100%;
-  }
+.read-the-docs {
+  color: #888;
 }
