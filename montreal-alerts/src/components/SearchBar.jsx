@@ -1,24 +1,17 @@
 
 import React from "react";
-import { FaSearch } from "react-icons/fa";
-import "./SearchBar.css";
-const SearchBar = ({ searchValue, setSearchValue, onSearch }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (onSearch) {
-      onSearch(searchValue);
-    }
-  };
+const SearchBar = ({ searchValue, setSearchValue }) => {
   return (
-    <form className="ultramodern-searchbar" onSubmit={handleSubmit}>
+    <form className="search-form">
       <input
         type="text"
-        placeholder="Search...."
+        placeholder="Que cherchez-vous?"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
+        className="search-input"
       />
-      <button type="submit">
-        <FaSearch />
+      <button type="submit" className="search-button">
+        Rechercher
       </button>
     </form>
   );

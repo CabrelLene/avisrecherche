@@ -1,41 +1,58 @@
-/* Ultra-modern header styling */
-.ultramodern-header {
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    /* Optional: add a subtle backdrop blur if supported */
-    backdrop-filter: blur(5px);
-  }
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo img {
-    height: 60px;
-    width: auto;
-  }
-  .nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .account-link {
-    display: flex;
-    align-items: center;
-    color: #ffffff;
-    font-size: 1.1rem;
-    text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-  .account-link:hover {
-    transform: scale(1.05);
-    color: #e0e0e0;
-  }
-  .account-icon {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-  }
+/* Container for the header */
+.header {
+  background: linear-gradient(90deg, #003366, #0055a5);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Left block: Menu button and Logo, aligned to the left */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+/* Style for the menu button */
+.menu-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+/* Logo styling */
+.logo img {
+  max-height: 60px;
+  width: auto;
+}
+/* Right block: Search button and Account button, aligned to the right */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+/* Style for the search button */
+.search-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+/* Account button styling */
+.account-button {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.account-icon {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+}
+.account-button:hover {
+  color: #B2D3EC;
+}

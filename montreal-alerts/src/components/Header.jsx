@@ -1,23 +1,27 @@
 
 import React from "react";
+import { FaBars, FaSearch, FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa"; // Make sure react-icons is installed
-import "./Header.css";
+import "./Header.css"; // Ensure this file contains your updated CSS
 const Header = () => {
   return (
-    <header className="ultramodern-header">
-      <div className="header-container">
+    <header className="header">
+      <div className="header-left">
+        <button className="menu-button">
+          <FaBars />
+        </button>
         <div className="logo">
-          {/* Replac the src with your logo image */}
-          <img src="/images/logo.png" alt="City Logo" />
+          <img src="/images/logo.png" alt="Logo de la Ville" />
         </div>
-        <nav className="nav-menu">
-          <Link to="#" className="account-link">
-            <FaUserCircle className="account-icon" />
-            Mon Compte
-          </Link>
-          {/* You can add more navigation links here if needed */}
-        </nav>
+      </div>
+      <div className="header-right">
+        <button className="search-button">
+          <FaSearch />
+        </button>
+        <Link to="#" className="account-button">
+          <FaUserCircle className="account-icon" />
+          Mon Compte
+        </Link>
       </div>
     </header>
   );
