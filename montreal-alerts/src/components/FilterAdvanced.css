@@ -1,0 +1,54 @@
+/* Container box surrounding all filter buttons and panels */
+.filter-box {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+  }
+  /* Filter buttons container */
+  .filter-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  /* Styling for each filter button */
+  .filter-button {
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .filter-button:hover {
+    background-color: #002244;
+  }
+  /* Panels container */
+  .filter-panels {
+    margin-top: 1rem;
+  }
+  /* Each panel styling */
+  .panel {
+    padding: 0.75rem;
+    border-top: 1px solid #ccc;
+    margin-top: 0.5rem;
+  }
+  /* Checkbox items */
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .checkbox-item input {
+    margin-right: 0.5rem;
+  }
+  /* Date picker input style */
+  .date-picker-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

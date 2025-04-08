@@ -1,8 +1,14 @@
 
 import React from "react";
-const SearchBar = ({ searchValue, setSearchValue }) => {
+import { FaSearch } from "react-icons/fa";
+import "./SearchBar.css";  // Make sure this file exists and is imported
+const SearchBar = ({ searchValue, setSearchValue, onSearch }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchValue);
+  };
   return (
-    <form className="search-form">
+    <form onSubmit={handleSubmit} className="search-form">
       <input
         type="text"
         placeholder="Que cherchez-vous?"
@@ -11,7 +17,7 @@ const SearchBar = ({ searchValue, setSearchValue }) => {
         className="search-input"
       />
       <button type="submit" className="search-button">
-        Rechercher
+        <FaSearch />
       </button>
     </form>
   );

@@ -75,36 +75,7 @@ body {
   justify-content: center;
 }
 /* Search form */
-.search-form {
-  display: flex;
-  flex: 1;
-  max-width: 400px;
-}
-.search-input {
-  flex: 1;
-  padding: 0.7rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-.search-input:focus {
-  border-color: #0055a5;
-  outline: none;
-}
-.search-button {
-  padding: 0.7rem 1rem;
-  background-color: #003366;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-.search-button:hover {
-  background-color: #002244;
-}
+
 /* Filters */
 .filters {
   display: flex;

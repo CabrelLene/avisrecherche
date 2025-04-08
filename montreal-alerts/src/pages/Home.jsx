@@ -1,75 +1,77 @@
- 
+
 import React, { useState } from "react";
 import alertsData from "../data/mockAlerts";
 import SearchBar from "../components/SearchBar";
-import Filter from "../components/Filter";
 import AlertCard from "../components/AlertCard";
+import FilterAdvanced from "../components/FilterAdvanced";
 const Home = () => {
+  // State for search input
   const [searchValue, setSearchValue] = useState("");
-  const [arrondissement, setArrondissement] = useState("");
-  const [sujet, setSujet] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  // State for advanced filter selections
+  const [selectedDistricts, setSelectedDistricts] = useState([]);
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  // State for pagination (number of visible alerts)
   const [visibleCount, setVisibleCount] = useState(6);
-  // Filtering logic—in this example, dates are compared as strings.
-  const filteredAlerts = alertsData.filter(alert => {
+  // Filter function: check search term, districts, subjects, and date
+  const filteredAlerts = alertsData.filter((alert) => {
+    // Check if alert title contains search value
     const matchesSearch = alert.title.toLowerCase().includes(searchValue.toLowerCase());
-    const matchesDistrict = arrondissement ? alert.arrondissement === arrondissement : true;
-    const matchesSujet = sujet ? alert.sujet === sujet : true;
-    
-    // Simple string comparison for dates; ensure your input matches the data format "YYYY-MM-DD"
-    const matchesStartDate = startDate ? alert.date >= startDate : true;
-    const matchesEndDate = endDate ? alert.date <= endDate : true;
-    
-    return matchesSearch && matchesDistrict && matchesSujet && matchesStartDate && matchesEndDate;
+    // Check districts: if any are selected, the alert's district must be included
+    const matchesDistrict =
+      selectedDistricts.length > 0 ? selectedDistricts.includes(alert.arrondissement) : true;
+    // Check subjects: if any subjects are selected, the alert's subject must be included
+    const matchesSubject =
+      selectedSubjects.length > 0 ? selectedSubjects.includes(alert.sujet) : true;
+    // Check date: if a date is selected, the alert date (formatted) must match (or you can adjust the logic)
+    const alertDate = new Date(alert.date).toISOString().slice(0, 10);
+    const selectedDateString = selectedDate ? selectedDate.toISOString().slice(0, 10) : null;
+    const matchesDate = selectedDateString ? alertDate === selectedDateString : true;
+    return matchesSearch && matchesDistrict && matchesSubject && matchesDate;
   });
+  // Slice alerts to show based on visibleCount state
   const visibleAlerts = filteredAlerts.slice(0, visibleCount);
+  // Handler for "Load More" button
   const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 6);
-  };
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    alert("La fonctionnalité d'abonnement n'est pas encore disponible !");
+    setVisibleCount((prev) => prev + 6);
   };
   return (
     <div className="home-page">
+      {/* Hero Section */}
       <section className="hero">
         <h1>Bienvenue sur Avis et Alertes</h1>
         <p>
-          Restez informé des dernières alertes et actualités en temps réel.
-          Découvrez toutes les informations essentielles pour la vie quotidienne.
+        Restez informé des dernières alertes et actualités en temps réel.
+        Découvrez toutes les informations essentielles pour la vie quotidienne.
         </p>
       </section>
+      {/* Actions Section: Search & Advanced Filter */}
       <section className="actions">
         <div className="search-filter">
           <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-          <Filter
-            arrondissement={arrondissement}
-            setArrondissement={setArrondissement}
-            sujet={sujet}
-            setSujet={setSujet}
-            startDate={startDate}
-            setStartDate={setStartDate}
-            endDate={endDate}
-            setEndDate={setEndDate}
+          <FilterAdvanced
+            selectedDistricts={selectedDistricts}
+            setSelectedDistricts={setSelectedDistricts}
+            selectedSubjects={selectedSubjects}
+            setSelectedSubjects={setSelectedSubjects}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
           />
         </div>
-        <div className="subscribe">
-          <a href="#" onClick={handleSubscribe}>M'abonner</a>
-        </div>
       </section>
+      {/* Alert List Section */}
       <section className="alert-list-section">
-        <h2>Liste des Alertes</h2>
+        <h2>Latest Alerts</h2>
         <div className="alert-list">
           {visibleAlerts.length > 0 ? (
-            visibleAlerts.map(alert => <AlertCard key={alert.id} alert={alert} />)
+            visibleAlerts.map((alert) => <AlertCard key={alert.id} alert={alert} />)
           ) : (
-            <p className="no-alerts">Aucun résultat trouvé.</p>
+            <p className="no-alerts">No alerts found.</p>
           )}
         </div>
         {visibleCount < filteredAlerts.length && (
           <div className="load-more">
-            <button onClick={handleLoadMore}>Charger plus</button>
+            <button onClick={handleLoadMore}>Charger Plus</button>
           </div>
         )}
       </section>
